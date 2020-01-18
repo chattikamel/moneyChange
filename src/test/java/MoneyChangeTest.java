@@ -28,7 +28,7 @@ public class MoneyChangeTest {
 
     @Test
     @DisplayName("Change for multipe of 5 amount")
-    public void testMuliple5_Amount(){
+    public void testMulipleOf5_Amount(){
         Change change = Solution.optimalChange(15);
 
         assertNotNull(change);
@@ -36,6 +36,19 @@ public class MoneyChangeTest {
         System.out.println(change);
 
         assertEquals(15, change.sum());
+    }
+
+    @Test
+    @DisplayName("Change for multipe of 10 amount")
+    public void testMulipleOf10_Amount(){
+        Change change = Solution.optimalChange(20);
+
+        assertNotNull(change);
+
+        System.out.println(change);
+
+
+        assertEquals(Change.builder().bill10(1).build(), change);
     }
 
 }
