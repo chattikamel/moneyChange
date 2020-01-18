@@ -1,38 +1,27 @@
 import io.projects.moneychange.Solution;
 import io.projects.moneychange.model.Change;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class MoneyChangeTest {
 
-    @Test
-    @DisplayName("Change for 2 coins")
-    public void test2Coins() {
 
-        Change change = Solution.optimalChange(2l);
+    @ParameterizedTest
+    @ValueSource(longs = { 2, 4 ,6 , 8})
+    @DisplayName("Change for even amount")
+    public void testEvenAmount(long s) {
 
-        assertNotNull(change);
-
-        System.out.println(change);
-
-        assertEquals(2, change.sum());
-
-    }
-
-    @Test
-    @DisplayName("Change for 4 coins")
-    public void test4Coins() {
-
-        Change change = Solution.optimalChange(4l);
+        Change change = Solution.optimalChange(s);
 
         assertNotNull(change);
 
         System.out.println(change);
 
-        assertEquals(4, change.sum());
+        assertEquals(s, change.sum());
 
     }
 
