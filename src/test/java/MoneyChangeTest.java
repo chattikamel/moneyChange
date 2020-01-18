@@ -1,6 +1,7 @@
 import io.projects.moneychange.Solution;
 import io.projects.moneychange.model.Change;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -23,6 +24,17 @@ public class MoneyChangeTest {
 
         assertEquals(s, change.sum());
 
+    }
+
+    @Test
+    public void testMuliple5_Amount(){
+        Change change = Solution.optimalChange(15);
+
+        assertNotNull(change);
+
+        System.out.println(change);
+
+        assertEquals(15, change.sum());
     }
 
 }
