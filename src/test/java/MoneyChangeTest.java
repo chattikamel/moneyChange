@@ -48,7 +48,7 @@ public class MoneyChangeTest {
         System.out.println(change);
 
 
-        assertEquals(Change.builder().bill10(1).build(), change);
+        assertEquals(Change.builder().bill10(2).build(), change);
     }
 
 }
