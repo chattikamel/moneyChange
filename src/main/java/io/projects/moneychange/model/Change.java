@@ -12,4 +12,8 @@ public class Change {
     private long bill5 = 0;
 
     private long bill10 = 0;
+
+    public long sum() {
+        return coin2 * 2 + bill5 * 5 + bill10 * 10;
+    }
 }

@@ -18,7 +18,21 @@ public class MoneyChangeTest {
 
         System.out.println(change);
 
-        assertEquals(2, change.getCoin2() * 2 + change.getBill5() * 5 + change.getBill10() * 10);
+        assertEquals(2, change.sum());
+
+    }
+
+    @Test
+    @DisplayName("Change for 4 coins")
+    public void test4Coins() {
+
+        Change change = Solution.optimalChange(4l);
+
+        assertNotNull(change);
+
+        System.out.println(change);
+
+        assertEquals(4, change.sum());
 
     }
 
