@@ -27,6 +27,7 @@ public class MoneyChangeTest {
     }
 
     @Test
+    @DisplayName("Change for multipe of 5 amount")
     public void testMuliple5_Amount(){
         Change change = Solution.optimalChange(15);
 
