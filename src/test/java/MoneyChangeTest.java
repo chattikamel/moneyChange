@@ -51,4 +51,20 @@ public class MoneyChangeTest {
         assertEquals(Change.builder().bill10(2).build(), change);
     }
 
+    @Test
+    @DisplayName("Multi bill types change")
+    public void testMultiBillTypeChange(){
+        Change change = Solution.optimalChange(25);
+
+        assertNotNull(change);
+
+        System.out.println(change);
+
+
+        assertEquals(Change.builder()
+                .bill10(2)
+                .bill5(1)
+                .build(), change);
+    }
+
 }
