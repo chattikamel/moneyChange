@@ -12,7 +12,7 @@ public class MoneyChangeTest {
 
 
     @ParameterizedTest
-    @ValueSource(longs = { 2, 4 ,6 , 8})
+    @ValueSource(longs = {2, 4, 6, 8})
     @DisplayName("Change for even amount")
     public void testEvenAmount(long s) {
 
@@ -28,7 +28,7 @@ public class MoneyChangeTest {
 
     @Test
     @DisplayName("Change for multipe of 5 amount")
-    public void testMulipleOf5_Amount(){
+    public void testMulipleOf5_Amount() {
         Change change = Solution.optimalChange(15);
 
         assertNotNull(change);
@@ -40,7 +40,7 @@ public class MoneyChangeTest {
 
     @Test
     @DisplayName("Change for multipe of 10 amount")
-    public void testMulipleOf10_Amount(){
+    public void testMulipleOf10_Amount() {
         Change change = Solution.optimalChange(20);
 
         assertNotNull(change);
@@ -51,10 +51,11 @@ public class MoneyChangeTest {
         assertEquals(Change.builder().bill10(2).build(), change);
     }
 
-    @Test
-    @DisplayName("Multi bill types change")
-    public void testMultiBillTypeChange(){
-        Change change = Solution.optimalChange(25);
+    @DisplayName("Change composed of bill(10, 5)")
+    @ParameterizedTest
+    @ValueSource(longs = {25, 45, 55, 75})
+    public void testMultiBillTypeChange(long s) {
+        Change change = Solution.optimalChange(s);
 
         assertNotNull(change);
 
@@ -62,8 +63,8 @@ public class MoneyChangeTest {
 
 
         assertEquals(Change.builder()
-                .bill10(2)
-                .bill5(1)
+                .bill10(s / 10)
+                .bill5(s % 10 / 5)
                 .build(), change);
     }
 
