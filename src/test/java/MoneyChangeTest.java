@@ -15,13 +15,9 @@ public class MoneyChangeTest {
     @ValueSource(longs = {2, 4, 6, 8})
     @DisplayName("Change for even amount")
     public void testEvenAmount(long s) {
-
         Change change = Solution.optimalChange(s);
 
         assertNotNull(change);
-
-        System.out.println(change);
-
         assertEquals(s, change.sum());
 
     }
@@ -33,8 +29,6 @@ public class MoneyChangeTest {
 
         assertNotNull(change);
 
-        System.out.println(change);
-
         assertEquals(15, change.sum());
     }
 
@@ -44,9 +38,6 @@ public class MoneyChangeTest {
         Change change = Solution.optimalChange(20);
 
         assertNotNull(change);
-
-        System.out.println(change);
-
 
         assertEquals(Change.builder().bill10(2).build(), change);
     }
@@ -59,12 +50,42 @@ public class MoneyChangeTest {
 
         assertNotNull(change);
 
-        System.out.println(change);
+        assertEquals(Change.builder()
+                .bill10(s / 10)
+                .bill5(s % 10 / 5)
+                .build(), change);
+    }
 
+
+    @DisplayName("Change composed of bill(10, 5) & coin2")
+    @ParameterizedTest
+    @ValueSource(longs = {27, 49, 59, 77})
+    public void testMultiBillTypeAndCoinChange(long s) {
+        Change change = Solution.optimalChange(s);
+
+        assertNotNull(change);
 
         assertEquals(Change.builder()
                 .bill10(s / 10)
                 .bill5(s % 10 / 5)
+                .coin2(s % 10 % 5 / 2)
+                .build(), change);
+    }
+
+
+
+
+    @DisplayName("Big amount 9223372036854775807l")
+    @Test
+    public void testBigAmount() {
+        Change change = Solution.optimalChange(9223372036854775807l);
+
+        assertNotNull(change);
+
+        assertEquals(Change.builder()
+                .bill10(922337203685477580l)
+                .bill5(1)
+                .coin2(1)
                 .build(), change);
     }
 
